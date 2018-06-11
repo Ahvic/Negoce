@@ -1,3 +1,8 @@
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Terrain extends Case {
     private String type;
 
@@ -6,7 +11,7 @@ public class Terrain extends Case {
         super.posY = posY;
         this.type = type;
 
-        changementEtatChemin(type);
+        changementType(type);
     }
 
     public String getType() {
@@ -15,27 +20,33 @@ public class Terrain extends Case {
 
     public void setType(String type) {
         this.type = type;
-        changementEtatChemin(type);
+        changementType(type);
     }
 
-    public void changementEtatChemin(String type){
+    public void changementType(String type){
         switch(type){
             case "Plaine" : super.etatChemin = 3;
-                break;
-            case "Foret" : super.etatChemin = 2;
                 break;
             case "Route" : super.etatChemin = 4;
                 break;
             case "Montagne" : super.etatChemin = 1;
                 break;
-            case "Riviere" : super.etatChemin = 0;
+            case "Rivière" : super.etatChemin = 0;
                 break;
             case "Ocean" : super.etatChemin = 0;
                 break;
             case "Pont" : super.etatChemin = 4;
                 break;
-            default: super.etatChemin = 0;
+            default: super.etatChemin = 2;
                 break;
+        }
+
+        if(!type.contains("Mine")) {
+            try {
+                super.setImage(new Image(new FileInputStream("sprites/" + type + ".png"), super.hCase, super.lCase, true, true));
+            } catch (FileNotFoundException e) {
+                System.out.println("Terrain|" + e);
+            }
         }
     }
 

@@ -1,3 +1,9 @@
+import javafx.event.EventHandler;
+import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.Map.*;
 
@@ -14,13 +20,28 @@ public class Ville extends Case {
         super.posY = posY;
         super.etatChemin = 4;
 
+        try {
+            super.setImage(new Image(new FileInputStream("sprites/Ville.png"),super.hCase,super.lCase,true,true));
+        }catch (FileNotFoundException e){
+            System.out.println("Ville|" + e);
+        }
+
         this.nom = nom;
         this.population = 20;
         this.stabilite = 5;
         this.puissance = 5;
 
-        for(int i = 0; i < joueurs.length; i++)
-            confiance.put(joueurs[i],20);
+        if(joueurs != null) {
+            for (int i = 0; i < joueurs.length; i++)
+                confiance.put(joueurs[i], 20);
+        }
+
+        super.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                onClick();
+            }
+        });
     }
 
     public String toString(){
@@ -39,5 +60,9 @@ public class Ville extends Case {
         }
 
         return res;
+    }
+
+    public void onClick(){
+        System.out.println("Je suis la ville " + nom + " et je vais bien");
     }
 }

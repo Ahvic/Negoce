@@ -3,6 +3,7 @@ import java.util.*;
 public class Carte {
     private int largeur;
     private int hauteur;
+
     List<Case> ensembleCase = new ArrayList<>();
 
     public Carte(int tailleL, int tailleH){
@@ -17,6 +18,10 @@ public class Carte {
                 ensembleCase.add(new Terrain(x,y,"Plaine"));
             }
         }
+    }
+
+    public List<Case> getEnsembleCase() {
+        return ensembleCase;
     }
 
     public String toString(){
