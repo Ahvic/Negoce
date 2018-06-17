@@ -6,9 +6,7 @@ import java.io.FileNotFoundException;
 public class Terrain extends Case {
     private String type;
 
-    public Terrain(int posX, int posY, String type){
-        super.posX = posX;
-        super.posY = posY;
+    public Terrain(String type){
         this.type = type;
 
         changementType(type);
@@ -51,6 +49,6 @@ public class Terrain extends Case {
     }
 
     public String toString(){
-        return "X: " + super.posX + " Y: " + super.posY + " type: " + type + " etat chemin: " + super.etatChemin;
+        return " type: " + type + " etat chemin: " + super.etatChemin;
     }
 }

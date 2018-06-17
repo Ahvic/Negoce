@@ -8,8 +8,8 @@ import java.io.FileNotFoundException;
 public class Mine extends Terrain{
     Ressource minerai;
 
-    public Mine(int posX, int posY, Ressource minerai){
-        super(posX,posY,"Mine");
+    public Mine(Ressource minerai){
+        super("Mine");
 
         try {
             super.setImage(new Image(new FileInputStream("sprites/Mine " + minerai.getNom() + ".png"),super.hCase,super.lCase,true,true));

@@ -15,9 +15,7 @@ public class Ville extends Case {
     private int puissance;
     private Map<Negociant,Integer> confiance = new HashMap<>();
 
-    public Ville(int posX, int posY, String nom, Negociant[] joueurs){
-        super.posX = posX;
-        super.posY = posY;
+    public Ville(String nom, Negociant[] joueurs){
         super.etatChemin = 4;
 
         try {
@@ -47,7 +45,7 @@ public class Ville extends Case {
     public String toString(){
         String res = "";
 
-        res += "X: " + super.posX + " Y: " + super.posY + " etat chemin: " + super.etatChemin + "\n";
+        res += " etat chemin: " + super.etatChemin + "\n";
         res += "Ville: " + nom + " pop: " + population + " stabilite: " + stabilite + " puissance: " + puissance + "\n";
         res += "Confiance :" + "\n";
 

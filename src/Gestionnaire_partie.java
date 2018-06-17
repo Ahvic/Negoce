@@ -7,7 +7,7 @@ public class Gestionnaire_partie {
     private Carte c;
 
     public Gestionnaire_partie(int duree, int nbJoueurs, int tailleCarteL, int tailleCarteH){
-        c = new Carte(tailleCarteL,tailleCarteH);
+        c = new Carte();
     }
 
     public Carte getC() {
